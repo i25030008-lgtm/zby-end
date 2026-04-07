@@ -1,0 +1,1006 @@
+/* 全局重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 页面背景 */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: 
+    linear-gradient(135deg, rgba(200,100,255,0.6), rgba(255,150,200,0.6)),
+    url("images/p.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    font-family: "Poppins", sans-serif;
+}
+
+/* 中央玻璃卡片 */
+.container {
+    backdrop-filter: blur(20px);
+    background: rgba(255,255,255,0.08);
+    border-radius: 25px;
+    padding: 60px 80px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+/* LINYI 主标题 */
+h1 {
+    font-size: 110px;
+    letter-spacing: 8px;
+
+    background: linear-gradient(90deg, #ffb3ec, #c77dff, #a0c4ff);
+    background-size: 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: gradientMove 6s infinite linear,
+               fadeUp 1.5s ease;
+}
+
+/* 副标题 */
+p {
+    margin-top: 20px;
+    font-size: 20px;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 2px;
+
+    animation: fadeUp 2s ease;
+}
+
+/* 按钮 */
+.btn {
+    margin-top: 40px;
+    display: inline-block;
+    padding: 15px 50px;
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden;
+
+    background: linear-gradient(45deg, #ff9de6, #c77dff);
+    box-shadow: 0 10px 30px rgba(199,125,255,0.5);
+
+    transition: 0.3s;
+    animation: fadeUp 2.5s ease;
+}
+
+/* 光扫效果 */
+.btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.6),
+        transparent
+    );
+
+    transition: 0.6s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn:hover {
+    transform: translateY(-5px) scale(1.05);
+}
+
+/* 动画 */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0%; }
+    100% { background-position: 300%; }
+}
+.ending-box {
+    margin: 60px 20px 30px 20px;
+    background: linear-gradient(135deg, #fff8f0, #fff0e5);
+    border-radius: 48px;
+    padding: 30px 20px;
+    box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(245, 163, 199, 0.4);
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.ending-box:hover {
+    transform: scale(1.01);
+}
+
+.ending-box-inner {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.ending-emojis {
+    font-size: 2.5rem;
+    letter-spacing: 12px;
+    margin-bottom: 12px;
+}
+
+.ending-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #e25d9e, #b572e0, #e25d9e);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+}
+
+.ending-line {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #f5a3c7, #c785e6);
+    margin: 0 auto 20px auto;
+    border-radius: 10px;
+}
+
+.ending-text {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: #4a3727;
+    margin-bottom: 16px;
+}
+
+.ending-text-bold {
+    font-weight: 600;
+    color: #b85a82;
+    margin-top: 8px;
+}
+
+.ending-signature {
+    font-size: 0.85rem;
+    color: #b2846b;
+    letter-spacing: 2px;
+    margin-top: 20px;
+    font-style: italic;
+    border-top: 1px dashed #f0cfb0;
+    display: inline-block;
+    padding-top: 14px;
+}
+
+/* Mobile optimization */
+@media (max-width: 550px) {
+    .ending-box {
+        margin: 50px 15px 25px 15px;
+        padding: 25px 16px;
+        border-radius: 36px;
+    }
+    
+    .ending-title {
+        font-size: 1.5rem;
+    }
+    
+    .ending-emojis {
+        font-size: 2rem;
+        letter-spacing: 8px;
+    }
+    
+    .ending-text {
+        font-size: 0.92rem;
+        line-height: 1.6;
+    }
+    
+    .ending-signature {
+        font-size: 0.75rem;
+    }
+    
+    .mobile-br {
+        display: block;
+    }
+}
+
+@media (min-width: 551px) {
+    .mobile-br {
+        display: none;
+    }
+}
+/* ========= 手机顶部遮挡修复（直接添加即可） ========= */
+
+/* 修复 hero 区域被手机状态栏遮挡 */
+.hero {
+    padding-top: constant(safe-area-inset-top) !important;
+    padding-top: env(safe-area-inset-top) !important;
+}
+
+/* 手机端调整高度和内边距 */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 420px !important;
+        height: auto !important;
+        padding: 50px 0 30px !important;
+    }
+    
+    .hero-text {
+        padding-top: 20px !important;
+    }
+    
+    .linyi-giant {
+        font-size: 2.8rem !important;
+        margin-top: 20px !important;
+    }
+}
+
+/* 刘海屏全面屏深度适配 */
+@supports (padding: max(0px)) {
+    .hero {
+        padding-top: max(25px, env(safe-area-inset-top)) !important;
+    }
+}
+/* ========= 新增特色美食板块样式 ========= */
+.feature-section {
+    margin: 80px 0 50px;
+}
+
+.title-icon {
+    font-size: 1.8rem;
+    margin: 0 12px;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 35px;
+}
+
+.feature-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: white;
+    border-radius: 28px;
+    padding: 15px 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: default;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.feature-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.feature-info {
+    flex: 1;
+}
+
+.feature-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #e25d9e, #b572e0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 6px;
+}
+
+.feature-desc {
+    font-size: 0.85rem;
+    color: #5a4a38;
+    line-height: 1.45;
+}
+/* ========= 修复美景板块横排显示 ========= */
+.scenery-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 45px !important;
+}
+
+@media (max-width: 768px) {
+    .scenery-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+/* ========= 结束语 · 优化版样式 ========= */
+.ending-section {
+    margin: 70px 20px 30px 20px;
+    padding: 10px;
+}
+
+.ending-container {
+    background: linear-gradient(135deg, #fff8f0, #ffefe2);
+    border-radius: 56px;
+    padding: 45px 30px;
+    text-align: center;
+    box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(245, 163, 199, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ending-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.15);
+}
+
+.ending-icon {
+    font-size: 2.8rem;
+    letter-spacing: 10px;
+    margin-bottom: 15px;
+}
+
+.ending-title {
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #e25d9e, #b572e0, #e25d9e);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.ending-divider {
+    width: 70px;
+    height: 3px;
+    background: linear-gradient(90deg, #f5a3c7, #c785e6);
+    margin: 0 auto 25px auto;
+    border-radius: 5px;
+}
+
+.ending-quote {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #5a3f2a;
+    font-style: italic;
+    margin-bottom: 20px;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ending-quote::before {
+    content: "“";
+    font-size: 1.5rem;
+    color: #e27ab0;
+    margin-right: 4px;
+}
+
+.ending-quote::after {
+    content: "”";
+    font-size: 1.5rem;
+    color: #b56ad9;
+    margin-left: 4px;
+    vertical-align: top;
+}
+
+.ending-message {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: #b85a82;
+    font-weight: 500;
+    margin-bottom: 25px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ending-signature-wrapper {
+    margin: 20px 0 15px;
+}
+
+.ending-signature {
+    font-size: 0.85rem;
+    color: #b2846b;
+    letter-spacing: 2px;
+    font-style: italic;
+    border-top: 1px dashed #f0cfb0;
+    border-bottom: 1px dashed #f0cfb0;
+    display: inline-block;
+    padding: 10px 20px;
+}
+
+.ending-heart {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #d48fb0;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+/* 手机端适配 */
+@media (max-width: 550px) {
+    .ending-section {
+        margin: 50px 15px 25px 15px;
+    }
+    
+    .ending-container {
+        padding: 30px 18px;
+        border-radius: 40px;
+    }
+    
+    .ending-icon {
+        font-size: 2.2rem;
+        letter-spacing: 6px;
+    }
+    
+    .ending-title {
+        font-size: 1.5rem;
+    }
+    
+    .ending-quote {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+    
+    .ending-message {
+        font-size: 0.88rem;
+    }
+    
+    .ending-signature {
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+        padding: 8px 12px;
+    }
+    
+    .ending-heart {
+        font-size: 0.8rem;
+    }
+    
+    br {
+        display: none;
+    }
+    
+    .ending-quote br, .ending-message br {
+        display: none;
+    }
+}
+
+@media (min-width: 551px) and (max-width: 768px) {
+    .ending-container {
+        padding: 38px 25px;
+    }
+    
+    .ending-title {
+        font-size: 1.8rem;
+    }
+}
+/* ========= 导航菜单样式 ========= */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 248, 240, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(245, 163, 199, 0.3);
+    padding: 12px 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.nav-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #e25d9e, #b572e0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #5a3f2a;
+    transition: color 0.2s;
+    padding: 5px 0;
+}
+
+.nav-links a:hover {
+    color: #e25d9e;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #e25d9e;
+}
+
+@media (max-width: 600px) {
+    .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 12px;
+        padding: 15px 0 5px;
+    }
+    .nav-links.show {
+        display: flex;
+    }
+    .mobile-menu-btn {
+        display: block;
+    }
+    .nav-container {
+        flex-wrap: wrap;
+    }
+}
+
+/* ========= 返回顶部按钮 ========= */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 25px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #e25d9e, #b572e0);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    border: none;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* ========= 页脚样式 ========= */
+.main-footer {
+    background: linear-gradient(135deg, #2c2418, #3a2a1f);
+    color: #f0e0c8;
+    padding: 40px 30px 25px;
+    margin-top: 60px;
+    border-radius: 40px 40px 0 0;
+}
+
+.footer-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 35px;
+}
+
+.footer-col h4 {
+    font-size: 1.2rem;
+    color: #f5a3c7;
+    margin-bottom: 15px;
+}
+
+.footer-col p, .footer-col a {
+    color: #d4c0a8;
+    text-decoration: none;
+    line-height: 1.8;
+    font-size: 0.9rem;
+}
+
+.footer-col a:hover {
+    color: #f5a3c7;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.social-links a {
+    font-size: 1.4rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    margin-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.8rem;
+}
+
+/* ========= 评论区样式 ========= */
+.comment-section {
+    max-width: 800px;
+    margin: 60px auto 30px;
+    background: white;
+    border-radius: 40px;
+    padding: 35px 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.comment-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #e25d9e, #b572e0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+.comment-form input, .comment-form textarea {
+    padding: 12px 18px;
+    border: 1px solid #f0cfb0;
+    border-radius: 30px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    background: #fefaf5;
+    transition: 0.2s;
+}
+
+.comment-form input:focus, .comment-form textarea:focus {
+    outline: none;
+    border-color: #e25d9e;
+    box-shadow: 0 0 0 3px rgba(226, 93, 158, 0.1);
+}
+
+.comment-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.comment-form button {
+    background: linear-gradient(135deg, #e25d9e, #b572e0);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 40px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s;
+    width: fit-content;
+    align-self: center;
+}
+
+.comment-form button:hover {
+    transform: scale(1.02);
+}
+
+.comment-list {
+    border-top: 1px solid #f0cfb0;
+    padding-top: 25px;
+}
+
+.comment-item {
+    padding: 15px 0;
+    border-bottom: 1px solid #fae6d2;
+}
+
+.comment-name {
+    font-weight: 700;
+    color: #e25d9e;
+    margin-bottom: 5px;
+}
+
+.comment-text {
+    color: #4a3b2c;
+    line-height: 1.5;
+}
+
+.comment-date {
+    font-size: 0.7rem;
+    color: #b2846b;
+    margin-top: 5px;
+}
+
+/* ========= 美食地图样式 ========= */
+.map-section {
+    margin: 50px auto;
+    max-width: 1000px;
+}
+
+.map-title {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #e25d9e, #b572e0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 25px;
+}
+
+.map-container {
+    background: #e8ddd0;
+    border-radius: 40px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.map-placeholder {
+    background: #c8b89a;
+    border-radius: 24px;
+    padding: 40px 20px;
+    text-align: center;
+    color: #4a3b2c;
+    font-weight: 500;
+}
+
+.map-locations {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.map-location-tag {
+    background: white;
+    padding: 8px 18px;
+    border-radius: 40px;
+    font-size: 0.85rem;
+    color: #e25d9e;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}        /* ========= 移动端完美适配 ========= */
+        
+        /* 1. 基础手机适配 */
+        @media (max-width: 768px) {
+            /* 容器内边距减小 */
+            .container {
+                padding: 0 18px 40px 18px;
+            }
+            
+            /* 标题字体缩小 */
+            .section-title {
+                font-size: 1.6rem;
+                padding-left: 14px;
+                border-left-width: 5px;
+            }
+            
+            /* 卡片间距减小 */
+            .card-grid {
+                gap: 20px;
+            }
+            
+            /* 卡片内边距减小 */
+            .card-content {
+                padding: 15px 18px 22px;
+            }
+            
+            .food-title {
+                font-size: 1.3rem;
+            }
+            
+            .food-desc {
+                font-size: 0.85rem;
+            }
+            
+            /* 美景区域 */
+            .scenery-info {
+                padding: 18px 20px 25px;
+            }
+            
+            .scenery-title {
+                font-size: 1.4rem;
+            }
+            
+            .scenery-text {
+                font-size: 0.85rem;
+            }
+        }
+        
+        /* 2. 超小屏幕 (iPhone SE, 小屏安卓) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 14px 35px 14px;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+                margin-bottom: 25px;
+            }
+            
+            .food-title {
+                font-size: 1.2rem;
+            }
+            
+            .food-desc {
+                font-size: 0.8rem;
+                line-height: 1.45;
+            }
+            
+            .scenery-title {
+                font-size: 1.2rem;
+            }
+            
+            .scenery-text {
+                font-size: 0.8rem;
+            }
+            
+            /* 分隔装饰文字缩小 */
+            .divider + div span {
+                font-size: 1rem !important;
+                padding: 4px 16px !important;
+            }
+        }
+        
+        /* 3. 修复 iPhone 刘海屏/动态岛 安全区域 */
+        @supports (padding: max(0px)) {
+            body {
+                padding-left: max(0px, env(safe-area-inset-left));
+                padding-right: max(0px, env(safe-area-inset-right));
+            }
+            
+            .navbar {
+                padding-left: max(16px, env(safe-area-inset-left));
+                padding-right: max(16px, env(safe-area-inset-right));
+            }
+            
+            .back-to-top {
+                right: max(20px, env(safe-area-inset-right));
+                bottom: max(20px, env(safe-area-inset-bottom));
+            }
+        }
+        
+        /* 4. 触摸优化 - 增大可点击区域 */
+        @media (max-width: 768px) {
+            .nav-links a {
+                padding: 10px 0;
+                display: inline-block;
+            }
+            
+            .back-to-top {
+                width: 44px;
+                height: 44px;
+                font-size: 1.3rem;
+            }
+            
+            /* 卡片悬停效果改为触摸反馈 */
+            .food-card:active,
+            .scenery-card:active {
+                transform: scale(0.98);
+                transition: transform 0.1s;
+            }
+        }
+        
+        /* 5. 防止字体自动放大 (iOS) */
+        @media (max-width: 768px) {
+            body {
+                -webkit-text-size-adjust: 100%;
+            }
+            
+            input, textarea, button {
+                font-size: 16px;
+            }
+        }
+        
+        /* 6. 图片懒加载优化 & 防止图片变形 */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .food-img, .scenery-img {
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+        }
+        
+        /* 7. 滚动条优化 (手机端隐藏滚动条但可滚动) */
+        @media (max-width: 768px) {
+            ::-webkit-scrollbar {
+                width: 4px;
+                height: 4px;
+            }
+            
+            ::-webkit-scrollbar-thumb {
+                background: #e25d9e;
+                border-radius: 4px;
+            }
+        }
+        
+        /* 8. 平滑滚动优化 */
+        html {
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* 9. 修复结束语和欢迎板块手机边距 */
+        @media (max-width: 550px) {
+            .ending-section,
+            .hospitality-section {
+                margin-left: 0;
+                margin-right: 0;
+            }
+            
+            .ending-container,
+            .hospitality-container {
+                border-radius: 32px;
+                padding: 28px 16px;
+            }
+            
+            .ending-title,
+            .hospitality-title {
+                font-size: 1.4rem;
+            }
+            
+            .ending-text,
+            .hospitality-text {
+                font-size: 0.85rem;
+            }
+        }
+        
+        /* 10. 防止横屏时内容过宽 */
+        @media (max-width: 900px) and (orientation: landscape) {
+            .hero {
+                height: 300px;
+            }
+            
+            .linyi-giant {
+                font-size: 2.5rem;
+            }
+            
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+       
+        }

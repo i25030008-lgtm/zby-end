@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Linyi · Exploring the Flavors of Yimeng</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fef7e8;
+            font-family: 'Segoe UI', 'PingFang SC', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.5;
+            color: #2c2b28;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ========= 主容器 ========= */
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 30px;
+        }
+
+        /* ========= 核心内容 ========= */
+        .hero {
+            text-align: center;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        /* LINYI 大字 - 粉紫渐变动画 */
+        .linyi-giant {
+            font-size: 7rem;
+            font-weight: 900;
+            letter-spacing: 12px;
+            background: linear-gradient(135deg, #f7a1c4, #c06cf0, #e25d9e, #b475e6);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientShift 6s ease infinite;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 装饰线 */
+        .divider {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, #f5a3c7, #c785e6);
+            margin: 0 auto 30px auto;
+            border-radius: 2px;
+        }
+
+        /* 副文案 */
+        .subtitle {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #8a7a68;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .tagline {
+            font-size: 1rem;
+            color: #b8a088;
+            font-style: italic;
+            margin-bottom: 50px;
+            letter-spacing: 1px;
+        }
+
+        /* 按钮 */
+        .explore-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #e25d9e, #b572e0);
+            color: white;
+            text-decoration: none;
+            padding: 16px 48px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border: none;
+            cursor: pointer;
+        }
+
+        .explore-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, #e870b0, #c080e8);
+        }
+
+        /* 底部小字 */
+        .footer-note {
+            position: fixed;
+            bottom: 25px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #c8b8a0;
+            letter-spacing: 1px;
+        }
+
+        /* ========= 响应式 ========= */
+        @media (max-width: 768px) {
+            .linyi-giant {
+                font-size: 3.5rem;
+                letter-spacing: 6px;
+            }
+            
+            .subtitle {
+                font-size: 0.9rem;
+                letter-spacing: 2px;
+            }
+            
+            .tagline {
+                font-size: 0.85rem;
+                margin-bottom: 40px;
+            }
+            
+            .explore-btn {
+                padding: 12px 36px;
+                font-size: 1rem;
+            }
+            
+            .divider {
+                width: 60px;
+                margin-bottom: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .linyi-giant {
+                font-size: 2.5rem;
+                letter-spacing: 4px;
+            }
+            
+            .subtitle {
+                font-size: 0.75rem;
+            }
+            
+            .tagline {
+                font-size: 0.75rem;
+            }
+        }
+
+        /* 安全区域适配 */
+        @supports (padding: max(0px)) {
+            .footer-note {
+                bottom: max(20px, env(safe-area-inset-bottom));
+            }
+        }
+
+        /* 优雅入场动画 */
+        .hero {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="hero">
+        <div class="linyi-giant">LINYI</div>
+        <div class="divider"></div>
+        <div class="subtitle">Shandong Cuisine</div>
+        <div class="tagline">A Bite of Tradition</div>
+        <a href="home.html" class="explore-btn">Explore →</a>
+    </div>
+</div>
+
+<div class="footer-note">
+    Hospitable Shandong · Yimeng Flavor
+</div>
+
+</body>
+</html>

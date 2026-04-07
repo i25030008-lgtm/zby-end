@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Linyi Cuisine · Exploring the Flavors of Yimeng</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fef7e8;
+            font-family: 'Segoe UI', 'PingFang SC', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.5;
+            color: #2c2b28;
+            scroll-behavior: smooth;
+        }
+
+        /* 主容器 */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 30px 70px 30px;
+        }
+
+        /* ========= 顶部横幅区域 ========= */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 480px;
+            background: url('images/L.jpg') center center / cover no-repeat;
+            border-radius: 0 0 48px 48px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2);
+            margin-bottom: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 0 0 48px 48px;
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .linyi-giant {
+            font-size: 5.8rem;
+            font-weight: 900;
+            letter-spacing: 6px;
+            background: linear-gradient(135deg, #f7a1c4, #c06cf0, #e25d9e, #b475e6);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientShift 6s ease infinite;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 500;
+            background: linear-gradient(135deg, #f5b0d0, #cf8ef0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+
+        .quote {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255, 248, 235, 0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 60px;
+            padding: 12px 28px;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #4b2e1e;
+            border-left: 5px solid #f5a3c7;
+            border-right: 5px solid #c785e6;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .quote::before {
+            content: "“";
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #e27ab0;
+            margin-right: 6px;
+        }
+        .quote::after {
+            content: "”";
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #b56ad9;
+            margin-left: 6px;
+            vertical-align: top;
+        }
+
+        /* ========= 美食卡片区域 ========= */
+        .food-section {
+            margin: 70px 0 40px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            border-left: 8px solid #f5a3c7;
+            padding-left: 20px;
+            margin-bottom: 40px;
+            color: #3a2a1f;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .food-card {
+            background: white;
+            border-radius: 36px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s;
+        }
+
+        .food-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px -14px rgba(0, 0, 0, 0.2);
+        }
+
+        .food-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 20px 25px 30px;
+        }
+
+        .food-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: linear-gradient(125deg, #e25d9e, #b572e0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 12px;
+            border-bottom: 2px dashed #f0cfb0;
+            display: inline-block;
+            padding-bottom: 6px;
+        }
+
+        .food-desc {
+            font-size: 0.95rem;
+            color: #4a3b2c;
+            line-height: 1.55;
+            margin-top: 12px;
+        }
+
+        /* ========= 美景区域 ========= */
+        .scenery-section {
+            margin: 60px 0 30px;
+        }
+
+        .scenery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 45px;
+        }
+
+        .scenery-card {
+            background: #fff6ed;
+            border-radius: 44px;
+            overflow: hidden;
+            transition: 0.3s;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .scenery-card:hover {
+            transform: scale(1.02);
+            background: white;
+            box-shadow: 0 20px 30px -8px rgba(0, 0, 0, 0.2);
+        }
+
+        .scenery-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .scenery-info {
+            padding: 22px 28px 32px;
+        }
+
+        .scenery-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(145deg, #3f7e6b, #b5638f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 16px;
+        }
+
+        .scenery-text {
+            font-size: 0.95rem;
+            color: #3b3228;
+            line-height: 1.6;
+        }
+
+        hr.divider {
+            margin: 50px 0 20px;
+            border: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #f5a3c7, #c785e6, #f5a3c7);
+            border-radius: 10px;
+        }
+
+        /* ========= 导航菜单 ========= */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 248, 240, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(245, 163, 199, 0.3);
+            padding: 12px 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #e25d9e, #b572e0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #5a3f2a;
+            transition: color 0.2s;
+            padding: 5px 0;
+        }
+
+        .nav-links a:hover {
+            color: #e25d9e;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #e25d9e;
+        }
+
+        /* ========= 返回顶部按钮 ========= */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 25px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #e25d9e, #b572e0);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            border: none;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ========= 结束语 ========= */
+        .ending-section {
+            margin: 70px 20px 30px 20px;
+            padding: 10px;
+        }
+
+        .ending-container {
+            background: linear-gradient(135deg, #fff8f0, #ffefe2);
+            border-radius: 56px;
+            padding: 45px 30px;
+            text-align: center;
+            box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(245, 163, 199, 0.3);
+        }
+
+        .ending-title {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #e25d9e, #b572e0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .ending-divider {
+            width: 70px;
+            height: 3px;
+            background: linear-gradient(90deg, #f5a3c7, #c785e6);
+            margin: 0 auto 25px auto;
+            border-radius: 5px;
+        }
+
+        .ending-text {
+            font-size: 1rem;
+            line-height: 1.65;
+            color: #4a3727;
+            margin-bottom: 16px;
+        }
+
+        .ending-signature {
+            font-size: 0.85rem;
+            color: #b2846b;
+            letter-spacing: 2px;
+            font-style: italic;
+            margin-top: 20px;
+            display: inline-block;
+            padding-top: 14px;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 70px;
+            font-size: 0.9rem;
+            color: #7c6a55;
+            border-top: 1px solid #eedbbc;
+            padding-top: 28px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 900px) {
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .scenery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 12px;
+                padding: 15px 0 5px;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .nav-container {
+                flex-wrap: wrap;
+            }
+            .linyi-giant {
+                font-size: 2.8rem;
+            }
+            .hero {
+                height: 380px;
+            }
+            .ending-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (min-width: 601px) {
+            .nav-links {
+                display: flex !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ========= 导航菜单 ========= -->
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="#" class="nav-logo">🍜 Linyi Flavor</a>
+        <button class="mobile-menu-btn" id="menuBtn">☰</button>
+        <div class="nav-links" id="navLinks">
+            <a href="#">🏠 Home</a>
+            <a href="#food-main">🍽️ Signature Dishes</a>
+            <a href="#food-more">🌟 More Flavors</a>
+            <a href="#souvenirs">🎁 Souvenirs</a>
+            <a href="#scenery">🏔️ Scenery</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <!-- 顶部 Hero -->
+    <div class="hero">
+        <div class="hero-text">
+            <div class="linyi-giant">LINYI</div>
+            <div class="subtitle">Shandong Cuisine: A Bite of Tradition.</div>
+            <div class="quote">Every bite carries the deep emotions of Yimeng, awakening memories of home.</div>
+        </div>
+    </div>
+
+    <!-- 美食主板块 -->
+    <div class="food-section" id="food-main">
+        <div class="section-title">🍜 Signature Dishes of Linyi</div>
+        <div class="card-grid">
+            <div class="food-card">
+                <img class="food-img" src="images/a.jpg" alt="Steamed fish">
+                <div class="card-content">
+                    <div class="food-title">Steamed Fish</div>
+                    <div class="food-desc">Fresh carp from Yimeng Reservoir, steamed with ginger and scallions. Tender, pure, and full of natural sweetness.</div>
+                </div>
+            </div>
+            <div class="food-card">
+                <img class="food-img" src="images/c.jpg" alt="Linyi Fried Chicken">
+                <div class="card-content">
+                    <div class="food-title">Linyi Fried Chicken</div>
+                    <div class="food-desc">Free-range chicken stir-fried with local peppers and secret sauce. Dry, fragrant, and deeply flavorful.</div>
+                </div>
+            </div>
+            <div class="food-card">
+                <img class="food-img" src="images/d.jpg" alt="Pancakes">
+                <div class="card-content">
+                    <div class="food-title">Pancakes</div>
+                    <div class="food-desc">Thin and crispy pancakes made from millet, corn, and sorghum. The taste of Yimeng resilience.</div>
+                </div>
+            </div>
+            <div class="food-card">
+                <img class="food-img" src="images/e.jpg" alt="Hotpot">
+                <div class="card-content">
+                    <div class="food-title">Hotpot</div>
+                    <div class="food-desc">Rich broth made from chicken and beef bones, served with mountain mushrooms and hand-cut lamb.</div>
+                </div>
+            </div>
+            <div class="food-card">
+                <img class="food-img" src="images/f.jpg" alt="Home-style stir-fry">
+                <div class="card-content">
+                    <div class="food-title">Home-style Stir-fry</div>
+                    <div class="food-desc">Local black pork with seasonal vegetables, wok-fried with house bean sauce. Simple and comforting.</div>
+                </div>
+            </div>
+            <div class="food-card">
+                <img class="food-img" src="images/g.jpg" alt="San soup">
+                <div class="card-content">
+                    <div class="food-title">San Soup</div>
+                    <div class="food-desc">Linyi's soul-warming breakfast soup. Beef bone and wheat kernels simmered for hours, finished with egg and cilantro.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 美食扩展板块 -->
+    <div class="food-section" id="food-more">
+        <div class="section-title">🌟 More Signature Flavors</div>
+        <div class="card-grid">
+            <div class="food-card">
+                <img class="food-img" src="images/feature1.jpg" alt="Eight-Treasure Black Beans">
+                <div class="card-content">
+                    <div class="food-title">Eight-Treasure Black Beans</div>
+                    <div class="food-desc">A Linyi specialty made from eight premium ingredients, naturally fermented for over a year.</div>
+                </div>
+            </div>
+            <div class="food-card">
+                <img class="food-img" src="images/feature2.jpg" alt="Yimeng Lamb Soup">
+                <div class="card-content">
+                    <div class="food-title">Yimeng Lamb Soup</div>
+                    <div class="food-desc">Whole lamb simmered until the broth turns milky white. A winter classic that warms you inside out.</div>
+                </div>
+            </div>
+            <div class="food-card">
+                <img class="food-img" src="images/feature3.jpg" alt="Braised Rabbit Head">
+                <div class="card-content">
+                    <div class="food-title">Braised Rabbit Head</div>
+                    <div class="food-desc">A legendary Linyi street food. Spicy, numbing, and packed with umami. Unforgettable.</div>
+                </div>
+            </div>
+            <div class="food-card">
+                <img class="food-img" src="images/feature4.jpg" alt="Guota Tofu">
+                <div class="card-content">
+                    <div class="food-title">Guota Tofu</div>
+                    <div class="food-desc">Egg-coated tofu pan-fried until golden outside, silky inside. Simple and delicious.</div>
+                </div>
+            </div>
+            <div class="food-card">
+                <img class="food-img" src="images/feature5.jpg" alt="Junan Donkey Meat">
+                <div class="card-content">
+                    <div class="food-title">Junan Donkey Meat</div>
+                    <div class="food-desc">"Dragon meat in heaven, donkey meat on earth." Lean, tender, and rich in flavor.</div>
+                </div>
+            </div>
+            <div class="food-card">
+                <img class="food-img" src="images/feature6.jpg" alt="Yishui Fenggao Cake">
+                <div class="card-content">
+                    <div class="food-title">Yishui Fenggao Cake</div>
+                    <div class="food-desc">A traditional sweet cake made from sticky rice, sesame, and osmanthus. Soft, chewy, and sweet.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========= 特产伴手礼板块 ========= -->
+    <div class="food-section" id="souvenirs">
+        <div class="section-title">🎁 Souvenirs · Take a Bite of Linyi Home 🎁</div>
+        <div class="card-grid">
+            <div class="food-card">
+                <img class="food-img" src="images/gift1.jpg" alt="Yimeng Pancake Gift Set">
+                <div class="card-content">
+                    <div class="food-title">Yimeng Pancake Gift Set</div>
+                    <div class="food-desc">The perfect gift from Linyi — thin, crispy, and made from five grains. This gift set includes multiple flavors like millet, corn, and sorghum. Pair it with local scallions and fermented black beans for an authentic Yimeng breakfast experience.</div>
+                </div>
+            </div>
+            <div class="food-card">
+                <img class="food-img" src="images/gift2.jpg" alt="Linyi Fried Chicken Sauce">
+                <div class="card-content">
+                    <div class="food-title">Linyi Fried Chicken Sauce</div>
+                    <div class="food-desc">The secret behind Linyi's famous fried chicken! This jarred sauce contains a blend of soybeans, chili, and over ten spices. Just stir-fry with chicken pieces, and you can recreate the authentic Linyi flavor in your own kitchen anywhere in the world.</div>
+                </div>
+            </div>
+            <div class="food-card">
+                <img class="food-img" src="images/gift3.jpg" alt="Mengshan Honey">
+                <div class="card-content">
+                    <div class="food-title">Mengshan Honey</div>
+                    <div class="food-desc">Harvested from the pristine forests of Mount Meng, this pure honey is naturally rich and aromatic. Collected from wild flowers and medicinal herbs, it's a healthy gift that brings the sweetness of Yimeng nature straight to your tea.</div>
+                </div>
+            </div>
+            <div class="food-card">
+                <img class="food-img" src="images/gift4.jpg" alt="Yimeng Chestnuts">
+                <div class="card-content">
+                    <div class="food-title">Yimeng Chestnuts</div>
+                    <div class="food-desc">Grown in the mountain forests of Yimeng, these chestnuts are naturally sweet and creamy when roasted. Vacuum-packed for freshness, they make an excellent snack or ingredient for braised dishes. A true taste of autumn in the mountains.</div>
+                </div>
+            </div>
+            <div class="food-card">
+                <img class="food-img" src="images/gift5.jpg" alt="Babao Fermented Black Beans Gift Box">
+                <div class="card-content">
+                    <div class="food-title">Babao Fermented Black Beans</div>
+                    <div class="food-desc">The most iconic Linyi specialty! Made from eight ingredients including soybeans, eggplant, and ginger, then naturally fermented for over a year. This gift box is perfect for food lovers who want to explore authentic Shandong pantry flavors.</div>
+                </div>
+            </div>
+            <div class="food-card">
+                <img class="food-img" src="images/gift6.jpg" alt="Linyi Sesame Cake">
+                <div class="card-content">
+                    <div class="food-title">Linyi Sesame Cake</div>
+                    <div class="food-desc">A traditional baked flatbread covered with toasted sesame seeds. Crispy on the outside, soft and layered inside. Individually packaged to stay fresh, it's a beloved snack that reminds every Linyi local of their childhood.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 分隔装饰 -->
+    <hr class="divider">
+    <div style="text-align: center; margin: 30px 0 20px;">
+        <span style="background: #fae6d2; padding: 6px 32px; border-radius: 50px; font-size: 1.3rem; font-weight: 600; color:#ab5e82;">🏞️ Besides delicious food, there is also breathtaking scenery 🖌️</span>
+    </div>
+
+    <!-- 美景区域 -->
+    <div class="scenery-section" id="scenery">
+        <div class="scenery-grid">
+            <div class="scenery-card">
+                <img class="scenery-img" src="images/mountain.jpg" alt="Yimeng Mountain">
+                <div class="scenery-info">
+                    <div class="scenery-title">Yimeng Mountain</div>
+                    <div class="scenery-text">The majestic Yimeng Mountains stretch for 800 li, boasting magnificent natural scenery and earning the reputation of a "natural oxygen bar." Climbing to the summit offers a panoramic view of Shandong Province.</div>
+                </div>
+            </div>
+            <div class="scenery-card">
+                <img class="scenery-img" src="images/wangxizhi.jpg" alt="Wang Xizhi's Former Residence">
+                <div class="scenery-info">
+                    <div class="scenery-title">Wang Xizhi's Former Residence</div>
+                    <div class="scenery-text">The former residence of the Sage of Calligraphy, located in Lanshan District. Stroll through classical gardens and admire calligraphic stone carvings.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 结束语 -->
+    <div class="ending-section">
+        <div class="ending-container">
+            <div class="ending-title">Taste Remembers the Way Home</div>
+            <div class="ending-divider"></div>
+            <div class="ending-text">From a steaming bowl of San soup to the sunset over Yimeng Mountain, the flavors and sceneries of Linyi have long been etched into every wanderer's soul.</div>
+            <div class="ending-text">No matter how far you go, home is always waiting for you to return, to taste the familiar old flavors once more.</div>
+            <div class="ending-signature">—— Children of Yimeng · Flavors of Nostalgia ——</div>
+        </div>
+    </div>
+
+    <!-- ========= 好客山东欢迎您 · 高级版 ========= -->
+    <div class="hospitality-section">
+        <div class="hospitality-container">
+            <div class="hospitality-pattern"></div>
+            <div class="hospitality-icon">🏔️ 🏯 🍜 ✨</div>
+            <div class="hospitality-chinese">Hospitable Shandong, Courteous Yimeng</div>
+            <div class="hospitality-title">Welcome to Shandong</div>
+            <div class="hospitality-divider">
+                <span>★</span><span>★</span><span>★</span>
+            </div>
+            <div class="hospitality-text">
+                From the ancient ink of Wang Xizhi to the fiery wok of Linyi's kitchens,<br>
+                from the misty peaks of Yimeng to the warmth of every hearth —<br>
+                <strong class="highlight">Shandong opens its heart to the world.</strong>
+            </div>
+            <div class="hospitality-subtitle">
+                <span class="quote-left">"</span> 有朋自远方来，不亦乐乎 Is it not a joy to have friends coming from afar? <span class="quote-right">"</span>
+            </div>
+            <div class="hospitality-btn">
+                <a href="#">Explore Linyi →</a>
+            </div>
+            <div class="hospitality-footer">
+                🇨🇳 沂蒙儿女 · 诚邀四海宾朋 The people of Yimeng cordially invite guests from all over the world 🇨🇳
+            </div>
+        </div>
+    </div>
+	
+    <!-- 页脚 -->
+    <div class="footer-note">
+        🌾 The Flavors of Linyi: More Than Just a Taste, It Resonates in Your Heart 🌾 &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="index.html" style="color:#c06cf0; text-decoration: none; border-bottom:1px solid #f0b3cf;">Back to Home</a>
+    </div>
+</div>
+
+<!-- 返回顶部按钮 -->
+<div class="back-to-top" id="backToTop">↑</div>
+
+<script>
+    // 移动端菜单
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    if (menuBtn) {
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+    }
+
+    // 返回顶部按钮
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (backBtn) {
+            if (window.scrollY > 300) {
+                backBtn.classList.add('show');
+            } else {
+                backBtn.classList.remove('show');
+            }
+        }
+    });
+    if (backBtn) {
+        backBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // 平滑跳转
+    document.querySelectorAll('.nav-links a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    if (navLinks) navLinks.classList.remove('show');
+                }
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
